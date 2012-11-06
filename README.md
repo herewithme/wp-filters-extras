@@ -21,27 +21,29 @@ Allow to remove method for an hook when, it's a class method used and class don'
 
 ### Example :
 	
-	// First sample
-	class MyClassA {
-	    function __construct() {
-	        add_action( 'wp_footer', array( $this, 'my_action' ), 10 );
-	    }
-	    function my_action() {
-	        print '<h1>' . __class__ . ' - ' . __function__ . '</h1>';
-	    }
-	}
-	new MyClassA();
+```php
+// First sample
+class MyClassA {
+    function __construct() {
+        add_action( 'wp_footer', array( $this, 'my_action' ), 10 );
+    }
+    function my_action() {
+        print '<h1>' . __class__ . ' - ' . __function__ . '</h1>';
+    }
+}
+new MyClassA();
 
-	// Second sample
-	class MyClassB {
-	    function __construct() {
-	        add_action( 'wp_footer', array( $this, 'my_action' ), 10 );
-	    }
-	    function my_action() {
-	        print '<h1>' . __class__ . ' - ' . __function__ . '</h1>';
-	    }
-	}
-	new MyClassB();
+// Second sample
+class MyClassB {
+    function __construct() {
+        add_action( 'wp_footer', array( $this, 'my_action' ), 10 );
+    }
+    function my_action() {
+        print '<h1>' . __class__ . ' - ' . __function__ . '</h1>';
+    }
+}
+new MyClassB();
+```
 
 ### The problem
 
@@ -52,7 +54,9 @@ The right way to load class is : `$my_class_b = new MyClassB();`
 
 This first method, `remove_filters_with_method_name();`, is fairly aggressive because it removes all filters that have the name "my_action", whatever the class.
 
-	remove_filters_with_method_name( 'wp_footer', 'my_action', 10 );
+```php
+remove_filters_with_method_name( 'wp_footer', 'my_action', 10 );
+```
 
 This call will remove the 2 filters for classes MyClassA and MyClassB.
 
@@ -60,7 +64,9 @@ This call will remove the 2 filters for classes MyClassA and MyClassB.
 
 The second method, `remove_filters_for_anonymous_class();`, is more accurate because it is necessary to specify both the name of the method but also the name of the PHP class.
 
-	remove_filters_for_anonymous_class( 'wp_footer', 'MyClassB', my_action', 10 );
+```php
+remove_filters_for_anonymous_class( 'wp_footer', 'MyClassB', my_action', 10 );
+```
 
 This call will only remove the filter for the class MyClassB.
 
