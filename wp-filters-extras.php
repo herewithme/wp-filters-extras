@@ -3,7 +3,7 @@
 Plugin Name: WP Filters Extras
 Plugin URI: http://www.beapi.fr
 Description: Add 2 methods for WP Filter API
-Version: 1.0
+Version: 1.0.1
 Author: BeAPI
 Author URI: http://www.beapi.fr
 
@@ -38,7 +38,7 @@ function remove_filters_with_method_name( $hook_name = '', $method_name = '', $p
 		// Test if filter is an array ! (always for class/method)
 		if ( isset($filter_array['function']) && is_array($filter_array['function']) ) {
 			// Test if object is a class and method is equal to param !
-			if ( get_class($filter_array['function'][0]) && $filter_array['function'][1] == $method_name ) {
+			if ( is_object($filter_array['function'][0]) && get_class($filter_array['function'][0]) && $filter_array['function'][1] == $method_name ) {
 				unset($wp_filter[$hook_name][$priority][$unique_id]);
 			}
 		}
@@ -63,7 +63,7 @@ function remove_filters_for_anonymous_class( $hook_name = '', $class_name ='', $
 		// Test if filter is an array ! (always for class/method)
 		if ( isset($filter_array['function']) && is_array($filter_array['function']) ) {
 			// Test if object is a class, class and method is equal to param !
-			if ( get_class($filter_array['function'][0]) && get_class($filter_array['function'][0]) == $class_name && $filter_array['function'][1] == $method_name ) {
+			if ( is_object($filter_array['function'][0]) && get_class($filter_array['function'][0]) && get_class($filter_array['function'][0]) == $class_name && $filter_array['function'][1] == $method_name ) {
 				unset($wp_filter[$hook_name][$priority][$unique_id]);
 			}
 		}
