@@ -26,7 +26,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 /**
  * Allow to remove method for an hook when, it's a class method used and class don't have global for instanciation !
  */
-function remove_filters_with_method_name( $hook_name = '', $method_name = '', $priority = 0 ) {
+function remove_filters_with_method_name( $hook_name = '', $method_name = '', $priority = 10 ) {
 	global $wp_filter;
 	
 	// Take only filters on right hook name and priority
@@ -51,7 +51,7 @@ function remove_filters_with_method_name( $hook_name = '', $method_name = '', $p
 /**
  * Allow to remove method for an hook when, it's a class method used and class don't have variable, but you know the class name :)
  */
-function remove_filters_for_anonymous_class( $hook_name = '', $class_name ='', $method_name = '', $priority = 0 ) {
+function remove_filters_for_anonymous_class( $hook_name = '', $class_name ='', $method_name = '', $priority = 10 ) {
 	global $wp_filter;
 	
 	// Take only filters on right hook name and priority
