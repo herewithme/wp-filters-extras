@@ -5,7 +5,7 @@ Add 2 PHP functions for WP Filter API, it's allow to remove filter/action on hoo
 
 **These functions are very useful for removing filters and actions from plugin not very well developed!**
 
-## Remove filters with method name only 
+## Remove filters with method name only
 
 `remove_filters_with_method_name( $hook_name = '', $method_name = '', $priority = 0 );`
 
@@ -20,7 +20,7 @@ Allow to remove method for an hook when, it's a class method used and class don'
 ## Usage
 
 ### Example :
-	
+
 ```php
 // First sample
 class MyClassA {
@@ -65,7 +65,7 @@ This call will remove the 2 filters for classes MyClassA and MyClassB.
 The second method, `remove_filters_for_anonymous_class();`, is more accurate because it is necessary to specify both the name of the method but also the name of the PHP class.
 
 ```php
-remove_filters_for_anonymous_class( 'wp_footer', 'MyClassB', my_action', 10 );
+remove_filters_for_anonymous_class( 'wp_footer', 'MyClassB', 'my_action', 10 );
 ```
 
 This call will only remove the filter for the class MyClassB.
