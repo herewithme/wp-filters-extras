@@ -1,0 +1,13 @@
+{
+  "name": "herewithme/wp-filters-extras",
+  "description": "Add 2 methods for WP Filter API",
+  "minimum-stability": "stable",
+  "license": "GPL-2.0",
+  "authors": [
+    {
+      "name": "Amaury Balmer",
+      "email": "amaury@beapi.fr"
+    }
+  ],
+  "type": "wordpress-muplugin"
+}
